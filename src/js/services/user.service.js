@@ -91,5 +91,18 @@ export default class User {
     })
 
     return deferred.promise;
-  } 
+  }
+
+  update(fields) {
+    return this._$http({
+      url: this._AppConstants.api + '/user',
+      method: 'PUT',
+      data: { user: fields }
+    }).then(
+      (res) => {
+        this.current = res.data.user;
+        return res.data.user;
+      }
+    );
+  }
 }
