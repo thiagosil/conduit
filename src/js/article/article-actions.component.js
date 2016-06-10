@@ -1,6 +1,9 @@
 class ArticleActionsCtrl {
-  constructor(User){
+  constructor(Articles, User, $state){
     'ngInject';
+
+    this._Articles = Articles;
+    this._$state = $state;
 
     if(User.current) {
       this.canModify = (User.current.username === this.article.author.username)
@@ -8,7 +11,14 @@ class ArticleActionsCtrl {
       this.canModify = false;
     }
 
-    console.log(this.canModify);
+  }
+
+  deleteArticle() {
+    this.isDeleting = true;
+    this._Articles.destroy(this.article.slug).then(
+      (success) => this._$state.go('app.home'),
+      (err) => this._$state.go('app.home')
+    );
   }
 }
 
