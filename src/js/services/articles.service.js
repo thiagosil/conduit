@@ -28,9 +28,10 @@ export default class Articles {
 
   // Retrieve a single article
   get(slug) {
-    let deferred = this.$q.defer();
+        let deferred = this._$q.defer();
 
-    if(!slug.replace(" ", "")){
+    // Check for blank title
+    if (!slug.replace(" ", "")) {
       deferred.reject("Article slug is empty");
       return deferred.promise;
     }
@@ -44,5 +45,6 @@ export default class Articles {
     );
 
     return deferred.promise;
+
   }
 }
