@@ -4,6 +4,7 @@ function ProfileConfig($stateProvider) {
   $stateProvider
   .state('app.profile', {
     url: '/@:username',
+    abstract: true,
     controller: 'ProfileCtrl',
     controllerAs: '$ctrl',
     templateUrl: 'profile/profile.html',
@@ -15,6 +16,20 @@ function ProfileConfig($stateProvider) {
           );
         }
       }
+  })
+  .state('app.profile.main', {
+    url: '',
+    controller: 'ProfileArticlesCtrl',
+    controllerAs: '$ctrl',
+    templateUrl: 'profile/profile-articles.html',
+    title: 'Profile'
+  })
+  .state('app.profile.favorites', {
+    url: '/favorites',
+    controller: 'ProfileArticlesCtrl',
+    controllerAs: '$ctrl',
+    templateUrl: 'profile/profile-articles.html',
+    title: 'Favorites'
   });
 
 };
