@@ -15,17 +15,8 @@
 
     </span>
 
-  <span ng-hide="$ctrl.canModify">
-    <button class="btn btn-sm btn-outline-secondary">
-      <i class="ion-plus-round"></i>
-      &nbsp;
-      Follow Brad Green
-    </button>
-    &nbsp;
-    <button class="btn btn-sm btn-outline-primary">
-      <i class="ion-heart"></i>
-      &nbsp;
-      Favorite Article <span class="counter">(29)</span>
-    </button>
-  </span>
+    <follow-btn user="$ctrl.article.author"></follow-btn>
+    <favorite-btn article="$ctrl.article">
+      {{ $ctrl.article.favorited ? 'Unfavorite' : 'Favorite' }} Article <span class="counter">({{$ctrl.article.favoritesCount}})</span>
+    </favorite-btn>
 </article-meta>

@@ -50,8 +50,23 @@ export default class Articles {
 
   destroy(slug) {
     return this._$http({
-      url: this._AppConstants.api + '/articles' + slug,
+      url: this._AppConstants.api + '/articles/' + slug,
       method: 'DELETE'
-    })
+    });
   }
+
+  favorite(slug) {
+    return this._$http({
+        url: this._AppConstants.api + '/articles/' + slug + '/favorite',
+        method: 'POST'
+    });
+  }
+
+  unfavorite(slug) {
+    return this._$http({
+        url: this._AppConstants.api + '/articles/' + slug + '/favorite',
+        method: 'DELETE'
+    });
+  }
+
 }
